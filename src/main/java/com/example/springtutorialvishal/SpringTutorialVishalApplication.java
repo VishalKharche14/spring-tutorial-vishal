@@ -1,9 +1,6 @@
 package com.example.springtutorialvishal;
 
-import com.example.springtutorialvishal.controller.ConstructorInjectedController;
-import com.example.springtutorialvishal.controller.MyController;
-import com.example.springtutorialvishal.controller.PropertyInjectedController;
-import com.example.springtutorialvishal.controller.SetterInjectedController;
+import com.example.springtutorialvishal.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -26,6 +23,9 @@ public class SpringTutorialVishalApplication {
 
         PropertyInjectedController propertyInjectedController  = (PropertyInjectedController) context.getBean("propertyInjectedController");
         System.out.println(propertyInjectedController.getGreeting());
+
+        PetController petController = (PetController) context.getBean("petController") ;
+        System.out.println(petController.bestPet());
     }
 
 }

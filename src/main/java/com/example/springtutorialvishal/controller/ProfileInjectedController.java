@@ -4,15 +4,15 @@ import com.example.springtutorialvishal.service.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ConstructorInjectedController {
+public class ProfileInjectedController {
     private final GreetingService greetingService ;
 
-    public ConstructorInjectedController(GreetingService greetingService) {
+    public ProfileInjectedController(GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
     public String getGreeting(){
-
-        return greetingService.greet()+" from Constructor" ;
+        return greetingService.greet()+" from Profile" ;
     }
+
 }

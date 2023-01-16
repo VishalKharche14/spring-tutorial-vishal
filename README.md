@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # spring-tutorial-vishal
 =======
 # Spring Framework Tutorial

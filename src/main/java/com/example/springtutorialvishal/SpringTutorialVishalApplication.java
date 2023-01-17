@@ -26,6 +26,9 @@ public class SpringTutorialVishalApplication {
 
         PetController petController = (PetController) context.getBean("petController") ;
         System.out.println(petController.bestPet());
+
+        EnglishGreetingController englishGreetingController = (EnglishGreetingController) context.getBean("englishGreetingController");
+        System.out.println(englishGreetingController.getGreeting());
     }
 
 }

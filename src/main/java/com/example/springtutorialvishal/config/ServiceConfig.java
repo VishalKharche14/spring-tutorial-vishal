@@ -1,51 +1,22 @@
 package com.example.springtutorialvishal.config;
 
-import com.example.springtutorialspets.service.CatPetService;
-import com.example.springtutorialspets.service.DogPetService;
-import com.example.springtutorialvishal.repositories.EnglishGreetingRepository;
-import com.example.springtutorialvishal.repositories.EnglishGreetingRepositoryImpl;
-import com.example.springtutorialvishal.service.*;
+import com.example.springtutorialvishal.datasource.FakeDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
+@PropertySource("classpath:datasource.properties")
 @Configuration
 public class ServiceConfig {
     @Bean
-    EnglishGreetingRepository englishGreetingRepository(){
-        return new EnglishGreetingRepositoryImpl();
-    }
-    @Bean
-    EnglishGreetingService englishGreetingService(EnglishGreetingRepository englishGreetingRepository){
-        return new EnglishGreetingService(englishGreetingRepository) ;
-    }
-
-    @Bean
-    GreetingServiceFactory greetingServiceFactory(){
-        return new GreetingServiceFactory() ;
-    }
-    @Bean
-    GreetingService constructorInjectedGreetingService(GreetingServiceFactory greetingServiceFactory){
-        return greetingServiceFactory.getGreetingService("constructor") ;
-    }
-    @Bean
-    GreetingService propertyInjectedGreetingService(GreetingServiceFactory greetingServiceFactory){
-        return greetingServiceFactory.getGreetingService("property") ;
-    }
-    @Bean
-    GreetingService setterInjectedGreetingService(GreetingServiceFactory greetingServiceFactory){
-        return greetingServiceFactory.getGreetingService("setter") ;
-    }
-    @Bean
-//    @Primary
-//    @Profile("dog")
-    DogPetService dogPetService(){
-        return new DogPetService() ;
-    }
-    @Bean
-    @Primary
-//    @Profile("cat")
-    CatPetService catPetService(){
-        return new CatPetService() ;
+    FakeDataSource fakeDataSource(@Value("${vsk.username}") String username ,
+                                  @Value("${vsk.password}") String password ,
+                                  @Value("${vsk.jdbcUrl}") String jdbcUrl ){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcUrl(jdbcUrl);
+        return fakeDataSource ;
     }
 }

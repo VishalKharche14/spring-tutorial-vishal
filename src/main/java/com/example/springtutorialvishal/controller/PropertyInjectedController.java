@@ -13,6 +13,6 @@ public class PropertyInjectedController {
     public GreetingService greetingService;
 
     public String getGreeting(){
-        return greetingService.greet()+" from Property" ;
+        return greetingService.greet();
     }
 }

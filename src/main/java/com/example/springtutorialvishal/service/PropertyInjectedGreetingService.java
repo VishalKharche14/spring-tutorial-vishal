@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class PropertyInjectedGreetingService implements GreetingService {
     @Override
     public String greet() {
-        return "Hello-Property";
+        return "Hello - from Property";
     }
 }
